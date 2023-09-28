@@ -5,9 +5,9 @@ void main(List<String> args) {
 }
 
 class Coche {
-  String marca = "";
-  String modelo = "";
-  int _id = 0; // Variable privada
+  late String marca;
+  late String modelo;
+  late int _id; //La variable privada
 
   Coche(String marca, String modelo, int id) {
     this.marca = marca;

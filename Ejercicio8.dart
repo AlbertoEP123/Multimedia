@@ -5,9 +5,9 @@ void main(List<String> args) {
 }
 
 class Coche {
-  String marca = "";
-  String modelo = "";
-  int id = 0;
+  late String marca;
+  late String modelo;
+  late int id;
 
   Coche(String marca, String modelo, int id) {
     this.marca = marca;
