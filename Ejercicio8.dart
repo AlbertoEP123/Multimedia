@@ -1,4 +1,3 @@
-import 'dart:io';
 
 void main(List<String> args) {
   final prueba = Coche("toyota", "auris", 2);
@@ -30,6 +29,13 @@ class Coche {
 
   set Modelo(String elModelo) {
     modelo = elModelo;
+  }
+   int get Id {
+    return id;
+  }
+
+  set Id(int elId) {
+    id= elId;
   }
 
   @override
