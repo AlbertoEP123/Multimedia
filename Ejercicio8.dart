@@ -1,4 +1,6 @@
-
+/*Realiza una clase llamada coche y crea una instancia de esa clase, asígnale 
+dos propiedades y dos métodos. Asigna valores y comprueba que los valores 
+se asignan correctamente.*/
 void main(List<String> args) {
   final prueba = Coche("toyota", "auris", 2);
   print(prueba);
@@ -30,12 +32,13 @@ class Coche {
   set Modelo(String elModelo) {
     modelo = elModelo;
   }
-   int get Id {
+
+  int get Id {
     return id;
   }
 
   set Id(int elId) {
-    id= elId;
+    id = elId;
   }
 
   @override

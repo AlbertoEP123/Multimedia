@@ -1,7 +1,14 @@
+/*
+Crea una clase Persona que tenga como datos: nombre, apellidos, DNI, dirección, 
+CP, ciudad, fecha de nacimiento. Tenemos que definir una clase Alumno que herede 
+de Persona y añada la información código del alumno, estudios (ESO, Bachillerato, 
+Ciclo Formativo), curso y edad, que se calculará a partir de la fecha de nacimiento 
+que se ha introducido y que es de tipo privado a la clase.
+*/
 void main(List<String> args) {
   DateTime fechaNac = DateTime(1981, 2, 2);
   Alumno manolo = Alumno("Manolo", "Gutierrez", "2683452M", "Calle pepe n15",
-      29001, "grana", fechaNac, 2, 2, fechaNac.year, "informatica");
+      29001, "grana", fechaNac, 2, 2, fechaNac.year, "ESO");
 
   print(manolo);
   print("\tSu edad es: " + manolo.calcularEdad().toString());

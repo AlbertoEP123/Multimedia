@@ -1,4 +1,5 @@
-
+/*A la clase coche anterior define una propiedad como privada. 
+Realiza el getter y el setter para poder asignar valores a esa propiedad.*/
 void main(List<String> args) {
   final prueba = Coche("toyota", "auris", 2);
   print(prueba);
@@ -36,7 +37,7 @@ class Coche {
   }
 
   set Id(int elId) {
-    _id= elId;
+    _id = elId;
   }
 
   @override
