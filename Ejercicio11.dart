@@ -10,7 +10,7 @@ class Persona {
   late int CP;
   late String ciudad;
   late DateTime fechaNacimiento;
-  Persona(this.CP,this.nombre,this.apellidos,this.DNI,this.direccion,this.ciudad,this.fechaNacimiento);
+  Persona(this.nombre,this.apellidos,this.DNI,this.direccion,this.ciudad,this.fechaNacimiento);
 
   @override
   String toString() {
@@ -24,4 +24,12 @@ class Alumno extends Persona {
   late String estudios;
   late int curso;
   late int edad;
+
+  Alumno(String nombre,
+  String apellidos,
+  String DNI,
+  String direccion,
+  int CP,
+  String ciudad,
+  DateTime fechaNacimiento, this.codigo,this.curso,this.edad,this.estudios) :super(nombre,apellidos,DNI,direccion,CP,ciudad,fechaNacimiento);
 }
