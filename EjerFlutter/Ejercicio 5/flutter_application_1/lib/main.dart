@@ -8,10 +8,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Transform Example',
+      title: 'Ejercicio 5',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Transform Example'),
+          title: Text('Ejercicio 5, método transform'),
         ),
         body: Center(
           child: Row(
