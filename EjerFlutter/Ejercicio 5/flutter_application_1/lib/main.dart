@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
 
               // Contenedor rojo con transformación de escala
               Transform.scale(
-                scale: 2, // Escala de 2 veces el tamaño original
+                scale: 2, // Escala 2 veces el tamaño original
                 child: Container(
                   width: 100,
                   height: 100,
