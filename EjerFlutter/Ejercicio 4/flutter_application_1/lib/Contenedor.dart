@@ -27,8 +27,7 @@ class Contenedor extends StatelessWidget {
       color: color,
       width: ancho,
       height: alto,
-      margin:
-          padding, // Usa "margin" en lugar de "padding" para aplicar el espacio
+      margin: padding, // Usa margin en lugar de padding para aplicar el espacio
       alignment: alineacion,
       child: Center(
         child: Text(texto),
