@@ -17,29 +17,30 @@ class MyApp extends StatelessWidget {
         body: Row(
           children: <Widget>[
             Contenedor(
-              color: Colors.cyan,
-              alto: 120.0,
-              ancho: 120.0,
-              texto: 'azul',
+              Colors.blue,
+              80.0,
+              100.0,
+              'azul',
               padding:
-                  const EdgeInsets.all(58.0), // Agrega el padding que quiera
-              alineacion: Alignment.center, // Agrega la alineación que quiera
+                  const EdgeInsets.all(10.0), // Agrega el padding que quiera
+              alineacion: Alignment.bottomRight, // Agrega la alineación que quiera
             ),
             Contenedor(
-              color: Colors.pink,
-              alto: 100.0,
-              ancho: 100.0,
-              texto: 'rosa',
-              padding: const EdgeInsets.all(96.0),
-              alineacion: Alignment.topLeft,
+             Colors.pink,
+              80.0,
+              100.0,
+              'rosa',
+              padding: const EdgeInsets.only(right:40.0),
+              alineacion: Alignment.center,
             ),
             Contenedor(
-              color: Colors.green,
-              alto: 110.0,
-              ancho: 110.0,
-              texto: 'verde',
-              padding: const EdgeInsets.all(22.0),
-              alineacion: Alignment.centerRight,
+              Colors.green,
+             80.0,
+             100.0,
+              'verde',
+              padding: const EdgeInsets.only(left: 21),
+              alineacion: Alignment.center,
+              
             ),
           ],
         ),

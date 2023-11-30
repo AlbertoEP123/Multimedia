@@ -6,19 +6,19 @@ class Contenedor extends StatelessWidget {
   final double ancho;
   final String texto;
   // Creo variable de padding, de tipo edge insets que esto crea
-  // espacios y margenes para cualquier widget
-  final EdgeInsets padding;
-  // creo variable tipo aligment, para alinear los contenedores
-  final Alignment alineacion;
+  // espacios y margenes para cualquier widget, ? para indicar que puede ser nulo
+  final EdgeInsetsGeometry? padding;  
+ // creo variable tipo aligment, para alinear los contenedores
+  final AlignmentGeometry? alineacion;
 
-  Contenedor({
-    required this.color,
-    required this.alto,
-    required this.ancho,
-    required this.texto,
-    //lo añado al constructor
-    required this.alineacion,
-    required this.padding,
+   Contenedor(
+    this.color,
+    this.alto,
+    this.ancho,
+    this.texto, { /*Valores de padding y alineacion
+    que se apliquen al texto(corregido) */
+    this.padding,    
+    this.alineacion
   });
 
   @override
@@ -27,10 +27,12 @@ class Contenedor extends StatelessWidget {
       color: color,
       width: ancho,
       height: alto,
-      margin: padding, // Usa margin en lugar de padding para aplicar el espacio
       alignment: alineacion,
-      child: Center(
-        child: Text(texto),
+      child: Padding( //Lo inicializamos a null
+        padding: padding ?? EdgeInsets.zero,
+        child: Center(
+          child: Text(texto),
+        ),
       ),
     );
   }
