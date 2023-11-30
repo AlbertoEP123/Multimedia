@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           title: const Text('Ejercicio 3'),
         ),
         body: Center(
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
                 children: [
                   const SizedBox(
                       height:
-                          50.0), // Añade espacio entre la imagen y la parte superior del contenedor
+                          10.0), // Añade espacio entre la imagen y la parte superior del contenedor
                   Container(
-                    height: 400,
+                    height: 130,
                     child: Image.asset('monalisa.jpg'),
                   ),
                   const Text('Monalisa',
@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
                 children: [
                   const SizedBox(
                       height:
-                          50.0), // Añade espacio entre la imagen y la parte superior del contenedor
+                          10.0), // Añade espacio entre la imagen y la parte superior del contenedor
                   Container(
-                    height: 500,
+                    height: 130,
                     child: Image.asset('elgrito.jpg'),
                   ),
                   const Text('El Grito',
