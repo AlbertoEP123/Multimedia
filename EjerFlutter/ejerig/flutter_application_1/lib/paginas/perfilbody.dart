@@ -10,11 +10,10 @@ class _PerfilBodyState extends State<PerfilBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-// Nueva lista de burbujas
+  // Nueva lista de burbujas
   List<historiasdestacadas> historias = [
-    // creo lista de historias destacadas
     historiasdestacadas(
-        text: 'historia destacada', // voy insertando la imagen de cada una
+        text: 'historia destacada',
         imagen: 'assets/h1.png',
         width: 80,
         height: 80),
@@ -22,18 +21,25 @@ class _PerfilBodyState extends State<PerfilBody>
         text: 'gatetes', imagen: 'assets/h1.png', width: 80, height: 80),
     historiasdestacadas(
         text: '2017 Euskadi', imagen: 'assets/h2.png', width: 80, height: 80),
+    historiasdestacadas(
+        text: '2017 Euskadi', imagen: 'assets/h2.png', width: 80, height: 80),
+    historiasdestacadas(
+        text: '2017 Euskadi', imagen: 'assets/h2.png', width: 80, height: 80),
+    historiasdestacadas(
+        text: '2017 Euskadi', imagen: 'assets/h2.png', width: 80, height: 80),
+    historiasdestacadas(
+        text: '2017 Euskadi', imagen: 'assets/h2.png', width: 80, height: 80),
   ];
 
   @override
   void initState() {
-    // esto es necesario para llamar al controllador
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
   void dispose() {
-    _tabController.dispose(); // esto lo cierra luego
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -74,9 +80,25 @@ class _PerfilBodyState extends State<PerfilBody>
                 ],
               ),
             ),
-            Row(
-              children: historias,
-            ),
+
+// Scroll horizontal de Historias Destacadas
+SingleChildScrollView(
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: List.generate(
+      historias.length,
+      (index) => Padding(
+        padding: const EdgeInsets.all(4.0), // Ajusta el espacio alrededor de cada historia
+        child: historias[index],
+      ),
+    ),
+  ),
+),
+
+
+
+
             // TabBar para navegar entre las secciones de fotos.
             Container(
               decoration: BoxDecoration(
@@ -125,12 +147,23 @@ class _PerfilBodyState extends State<PerfilBody>
                 children: [
                   // Contenido de la primera pestaña (Imágenes u otra cosa)
                   Container(
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(1.0),
                     child: GridView(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
+                      mainAxisSpacing: 0, // Eliminar el margen vertical entre las fotos
+                      crossAxisSpacing: 0,
                       ),
                       children: [
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
                         Image.asset('assets/1.png'),
                         Image.asset('assets/2.png'),
                         Image.asset('assets/3.png'),
