@@ -28,10 +28,9 @@ class Perfil extends StatelessWidget {
             color: const Color.fromARGB(255, 255, 255, 255),
             child: Row(
               children: [
-                const CircleAvatar(
-                  // avatar circular
+                CircleAvatar(
                   radius: 40,
-                  backgroundImage: NetworkImage('assets/4.png'), // no carga
+                  backgroundImage: AssetImage('assets/4.png'),
                 ),
                 const SizedBox(width: 16),
                 Expanded(

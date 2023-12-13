@@ -9,8 +9,8 @@ class PerfilBody extends StatefulWidget {
 class _PerfilBodyState extends State<PerfilBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late ScrollController _scrollController;
 
-  // Nueva lista de burbujas
   List<historiasdestacadas> historias = [
     historiasdestacadas(
         text: 'historia destacada',
@@ -35,11 +35,13 @@ class _PerfilBodyState extends State<PerfilBody>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    _scrollController = ScrollController();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -51,7 +53,6 @@ class _PerfilBodyState extends State<PerfilBody>
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Biografía
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -81,62 +82,23 @@ class _PerfilBodyState extends State<PerfilBody>
               ),
             ),
 
-// Scroll horizontal de Historias Destacadas
-SingleChildScrollView(
-  scrollDirection: Axis.horizontal,
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: List.generate(
-      historias.length,
-      (index) => Padding(
-        padding: const EdgeInsets.all(4.0), // Ajusta el espacio alrededor de cada historia
-        child: historias[index],
-      ),
-    ),
-  ),
-),
-
-
-
-
-            // TabBar para navegar entre las secciones de fotos.
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(width: 0.5, color: Colors.grey.shade400),
-              ),
-              child: TabBar(
-                controller: _tabController,
-                unselectedLabelColor: Colors.grey.shade400,
-                labelColor: Colors.black,
-                indicator: const UnderlineTabIndicator(
-                  borderSide: BorderSide(color: Colors.black),
+            // Scroll horizontal de Historias Destacadas
+            Expanded(
+              child: Scrollbar(
+                controller: _scrollController,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _scrollController,
+                  child: Row(
+                    children: List.generate(
+                      historias.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: historias[index],
+                      ),
+                    ),
+                  ),
                 ),
-                tabs: const [
-                  Tab(
-                    icon: Icon(
-                      Icons.border_all_sharp,
-                      size: 30,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.list,
-                      size: 30,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.account_box_outlined,
-                      size: 30,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.bookmark_border_rounded,
-                      size: 30,
-                    ),
-                  ),
-                ],
               ),
             ),
 
@@ -149,10 +111,11 @@ SingleChildScrollView(
                   Container(
                     padding: EdgeInsets.all(1.0),
                     child: GridView(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                      mainAxisSpacing: 0, // Eliminar el margen vertical entre las fotos
-                      crossAxisSpacing: 0,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
                       ),
                       children: [
                         Image.asset('assets/1.png'),
@@ -170,6 +133,27 @@ SingleChildScrollView(
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+
+            // TabBar para navegar entre las secciones de fotos.
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 0.5, color: Colors.grey.shade400),
+              ),
+              child: TabBar(
+                controller: _tabController,
+                unselectedLabelColor: Colors.grey.shade400,
+                labelColor: Colors.black,
+                indicator: const UnderlineTabIndicator(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                tabs: const [
+                  Tab(icon: Icon(Icons.border_all_sharp, size: 30)),
+                  Tab(icon: Icon(Icons.list, size: 30)),
+                  Tab(icon: Icon(Icons.account_box_outlined, size: 30)),
+                  Tab(icon: Icon(Icons.bookmark_border_rounded, size: 30)),
                 ],
               ),
             ),
