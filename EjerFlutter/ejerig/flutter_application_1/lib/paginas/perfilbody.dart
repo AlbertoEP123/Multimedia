@@ -10,6 +10,8 @@ class _PerfilBodyState extends State<PerfilBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
+  static const IconData border_all_sharp =
+      IconData(0xe7f4, fontFamily: 'MaterialIcons');
 
   List<historiasdestacadas> historias = [
     historiasdestacadas(
@@ -83,22 +85,37 @@ class _PerfilBodyState extends State<PerfilBody>
             ),
 
             // Scroll horizontal de Historias Destacadas
-            Expanded(
-              child: Scrollbar(
+            Scrollbar(
+              controller: _scrollController,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 controller: _scrollController,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  controller: _scrollController,
-                  child: Row(
-                    children: List.generate(
-                      historias.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: historias[index],
-                      ),
+                child: Row(
+                  children: List.generate(
+                    historias.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: historias[index],
                     ),
                   ),
                 ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 0.5, color: Colors.grey.shade400),
+              ),
+              child: TabBar(
+                labelColor: Colors.black,
+                indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                tabs: [
+                  Tab(icon: Icon(Icons.border_all_sharp)),
+                  Tab(icon: Icon(Icons.list)),
+                  Tab(icon: Icon(Icons.account_box_outlined)),
+                  Tab(icon: Icon(Icons.bookmark_border_rounded)),
+                ],
               ),
             ),
 
@@ -107,7 +124,7 @@ class _PerfilBodyState extends State<PerfilBody>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  // Contenido de la primera pestaña (Imágenes u otra cosa)
+                  // Contenido de la primera pestaña
                   Container(
                     padding: EdgeInsets.all(1.0),
                     child: GridView(
@@ -133,27 +150,86 @@ class _PerfilBodyState extends State<PerfilBody>
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
+                  // Contenido de la segunda pestaña
+                  Container(
+                    padding: EdgeInsets.all(1.0),
+                    child: GridView(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                      ),
+                      children: [
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                      ],
+                    ),
+                  ),
 
-            // TabBar para navegar entre las secciones de fotos.
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(width: 0.5, color: Colors.grey.shade400),
-              ),
-              child: TabBar(
-                controller: _tabController,
-                unselectedLabelColor: Colors.grey.shade400,
-                labelColor: Colors.black,
-                indicator: const UnderlineTabIndicator(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                tabs: const [
-                  Tab(icon: Icon(Icons.border_all_sharp, size: 30)),
-                  Tab(icon: Icon(Icons.list, size: 30)),
-                  Tab(icon: Icon(Icons.account_box_outlined, size: 30)),
-                  Tab(icon: Icon(Icons.bookmark_border_rounded, size: 30)),
+                  // Contenido de la tercera pestaña
+                  Container(
+                    padding: EdgeInsets.all(1.0),
+                    child: GridView(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                      ),
+                      children: [
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                      ],
+                    ),
+                  ),
+
+                  // Contenido de la cuarta pestaña
+                  Container(
+                    padding: EdgeInsets.all(1.0),
+                    child: GridView(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                      ),
+                      children: [
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                        Image.asset('assets/1.png'),
+                        Image.asset('assets/2.png'),
+                        Image.asset('assets/3.png'),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
