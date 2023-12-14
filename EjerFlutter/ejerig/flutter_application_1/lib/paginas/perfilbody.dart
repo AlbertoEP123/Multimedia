@@ -129,7 +129,7 @@ class _PerfilBodyState extends State<PerfilBody>
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.bookmark_border_rounded,
+                      Icons.account_box_rounded,
                       size: 30,
                     ),
                   ),

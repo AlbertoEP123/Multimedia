@@ -1,34 +1,44 @@
 import 'package:flutter/material.dart';
 import 'barranavegacion.dart';
 import 'pantallafinalizacion.dart';
+// ignore: unnecessary_import
+import 'package:flutter/src/material/icons.dart';
+
 import 'perfil.dart';
 
-// Creamos pantalla inicio
 class PantallaInicio extends StatelessWidget {
   int _currentIndex = 0;
+
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        // Alineamos el contenido
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Instagram',
-            style: TextStyle(fontFamily: 'Lobster', fontSize: 45),
-          ),
-          SizedBox(height: 20), // Espaciado entre el texto e imagen
-          Image.asset(
-            'assets/fotooriginal.png', // No carga el avatar
-            width: 1500,
-            height: 550,
-          ),
-        ],
+      body: SafeArea(
+        child: ListView(
+          // Use crossAxisAlignment: CrossAxisAlignment.center if needed
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Instagram',
+                    style: TextStyle(fontFamily: 'Lobster', fontSize: 45),
+                  ),
+                  SizedBox(height: 20),
+                  Image.asset(
+                    'assets/fotooriginal.png',
+                    width: 1500,
+                    height: 550,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      // Implementamos la barra de navegacion
       bottomNavigationBar: Container(
-        
-        height: 70,  
+        height: 70,
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
@@ -36,12 +46,13 @@ class PantallaInicio extends StatelessWidget {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home,
+              ),
               label: 'Inicio',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Perfil',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.check),
@@ -53,10 +64,6 @@ class PantallaInicio extends StatelessWidget {
     );
   }
 
-  // Metodo usado en todas las paginas para manejar la navegacion
-  // entre diferentes pantallas según el indice proporcionado
-  // context: accede al contexto de flutter, index: pantalla a la que navega
-  // navigator.plush y material pageroute hace las transiciones
   void handleNavigation(BuildContext context, int index) {
     if (index == 0) {
       // Puedes agregar lógica adicional si es necesario para la página de inicio
