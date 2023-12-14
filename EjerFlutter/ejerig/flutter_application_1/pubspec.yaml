@@ -37,7 +37,7 @@ flutter:
   fonts:
     - family: spongebob
       fonts:
-        - asset: lib/tipografias/spongebob.ttf
+        - asset: assets/tipografias/spongebob.ttf
 
   assets:
     - assets/
