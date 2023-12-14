@@ -17,33 +17,30 @@ class historiasdestacadas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(1.0),
       child: Container(
-        width: 100,  // Puedes ajustar este ancho según tus necesidades
+        width: 90,  // Puedes ajustar este ancho según tus necesidades
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.grey.shade400,
-                  width: 1,
-                ),
+               
               ),
-              width: 75,
-              height: 75,
+              width: 70,
+              height: 70,
               alignment: Alignment.bottomCenter,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.pink.shade100,
+                 
                   border: Border.all(
-                    color: Colors.grey.shade400,
+                    
                     width: 1,
                   ),
                 ),
-                width: 65,
-                height: 65,
+                width: 70,
+                height: 70,
                 alignment: Alignment.center,
                 child: Image.asset(
                   imagen,
@@ -52,7 +49,7 @@ class historiasdestacadas extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 6),
             Text(text),
           ],
         ),
