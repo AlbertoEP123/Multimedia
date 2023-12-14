@@ -5,8 +5,9 @@ import 'perfil.dart';
 
 // Creamos pantalla inicio
 class PantallaInicio extends StatelessWidget {
+  int _currentIndex = 0;
   @override
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         // Alineamos el contenido
@@ -19,31 +20,50 @@ class PantallaInicio extends StatelessWidget {
           SizedBox(height: 20), // Espaciado entre el texto e imagen
           Image.asset(
             'assets/fotooriginal.png', // No carga el avatar
-            width: 2000,
+            width: 1500,
             height: 550,
           ),
         ],
       ),
       // Implementamos la barra de navegacion
-      bottomNavigationBar: BarraNavegacion(
-        currentIndex: 0,
-        onTap: (index) {
-          handleNavigation(context, index);
-        },
+      bottomNavigationBar: Container(
+        
+        height: 70,  
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            handleNavigation(context, index);
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Inicio',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Perfil',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.check),
+              label: 'Finalización',
+            ),
+          ],
+        ),
       ),
     );
   }
 
-// Metodo usado en todas las paginas para manejar la navegacion
-// entre diferentes pantallas según el indice proporcionado
-// context: accede al contexto de flutter, index: pantalla a la que navega
-// navigator.plush y material pageroute hace las transiciones
+  // Metodo usado en todas las paginas para manejar la navegacion
+  // entre diferentes pantallas según el indice proporcionado
+  // context: accede al contexto de flutter, index: pantalla a la que navega
+  // navigator.plush y material pageroute hace las transiciones
   void handleNavigation(BuildContext context, int index) {
-    if (index == 1) {
+    if (index == 0) {
+      // Puedes agregar lógica adicional si es necesario para la página de inicio
+    } else if (index == 1) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Perfil()),
-        
       );
     } else if (index == 2) {
       Navigator.push(
