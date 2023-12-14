@@ -43,6 +43,7 @@ class PantallaInicio extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Perfil()),
+        
       );
     } else if (index == 2) {
       Navigator.push(

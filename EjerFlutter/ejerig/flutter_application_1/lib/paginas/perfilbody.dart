@@ -10,12 +10,11 @@ class _PerfilBodyState extends State<PerfilBody>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
- 
 
   List<historiasdestacadas> historias = [
     historiasdestacadas(
-        text: 'Nuevo',imagen: 'assets/h5.png', width: 50, height: 60),
-   historiasdestacadas(
+        text: 'Nuevo', imagen: 'assets/h5.png', width: 50, height: 60),
+    historiasdestacadas(
         text: 'Destacadas..', imagen: 'assets/h1.png', width: 60, height: 60),
     historiasdestacadas(
         text: 'gatetes', imagen: 'assets/h1.png', width: 60, height: 60),
@@ -104,15 +103,36 @@ class _PerfilBodyState extends State<PerfilBody>
                 border: Border.all(width: 0.5, color: Colors.grey.shade400),
               ),
               child: TabBar(
+                unselectedLabelColor: Colors.grey.shade400,
                 labelColor: Colors.black,
-                indicator: UnderlineTabIndicator(
+                indicator: const UnderlineTabIndicator(
                   borderSide: BorderSide(color: Colors.black),
                 ),
-                tabs: [
-                  Tab(icon: Icon(Icons.border_all_sharp)),
-                  Tab(icon: Icon(Icons.list)),
-                  Tab(icon: Icon(Icons.account_box_outlined)),
-                  Tab(icon: Icon(Icons.bookmark_border_rounded)),
+                tabs: const [
+                  Tab(
+                    icon: Icon(
+                      Icons.border_all_sharp,
+                      size: 30,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.list,
+                      size: 30,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.account_box_outlined,
+                      size: 30,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.bookmark_border_rounded,
+                      size: 30,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -159,7 +179,7 @@ class _PerfilBodyState extends State<PerfilBody>
                         crossAxisSpacing: 8.0,
                       ),
                       children: [
-                     Image.asset('assets/1.png'),
+                        Image.asset('assets/1.png'),
                         Image.asset('assets/2.png'),
                         Image.asset('assets/3.png'),
                         Image.asset('assets/5.jpeg'),
@@ -186,7 +206,7 @@ class _PerfilBodyState extends State<PerfilBody>
                         crossAxisSpacing: 8.0,
                       ),
                       children: [
-                       Image.asset('assets/1.png'),
+                        Image.asset('assets/1.png'),
                         Image.asset('assets/2.png'),
                         Image.asset('assets/3.png'),
                         Image.asset('assets/5.jpeg'),
@@ -213,7 +233,7 @@ class _PerfilBodyState extends State<PerfilBody>
                         crossAxisSpacing: 8.0,
                       ),
                       children: [
-                      Image.asset('assets/1.png'),
+                        Image.asset('assets/1.png'),
                         Image.asset('assets/2.png'),
                         Image.asset('assets/3.png'),
                         Image.asset('assets/5.jpeg'),
