@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'barranavegacion.dart';
 import 'pantallafinalizacion.dart';
 // ignore: unnecessary_import
 import 'package:flutter/src/material/icons.dart';
@@ -53,6 +52,7 @@ class PantallaInicio extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
+              label: 'Cuenta',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.check),
