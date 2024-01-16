@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
 import 'pantallafinalizacion.dart';
+// ignore: unnecessary_import
+import 'package:flutter/src/material/icons.dart';
+
 import 'perfil.dart';
 
 class PantallaInicio extends StatelessWidget {
-  final int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Instagram',
-              style: TextStyle(fontFamily: 'Lobster', fontSize: 45),
-            ),
-            SizedBox(height: 20),
-            Image.asset(
-              'assets/fotooriginal.png',
-              width: 1500,
-              height: 550,
-            ),
-          ],
-        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Instagram',
+                style: TextStyle(fontFamily: 'Lobster', fontSize: 45),
+              ),
+              SizedBox(height: 20),
+              Image.asset(
+                'assets/fotooriginal.png',
+                width: 1500,
+                height: 550,
+              ),
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-         
-          currentIndex: _currentIndex,
+      bottomNavigationBar: Container(
+        height: 70,
+        child: BottomNavigationBar(
+          currentIndex: 0,
           onTap: (index) {
             handleNavigation(context, index);
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home,
+              ),
               label: 'Inicio',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Perfil',
+              label: 'Cuenta',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.check),
@@ -48,7 +52,7 @@ class PantallaInicio extends StatelessWidget {
             ),
           ],
         ),
-      
+      ),
     );
   }
 

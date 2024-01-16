@@ -73,12 +73,12 @@ class Perfil extends StatelessWidget {
                       ),
                       Padding(
                         // creo editar perfil
-                        padding: const EdgeInsets.only(left: 1),
+                        padding: const EdgeInsets.only(left: 100),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(1),
+                              padding: const EdgeInsets.all(3),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 3),
@@ -88,7 +88,7 @@ class Perfil extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                width: 100,
+                                width: 240,
                                 height: 28,
                                 alignment: Alignment.center,
                                 child: const Text(

@@ -44,12 +44,14 @@ class _PerfilBodyState extends State<PerfilBody>
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        body: Column(
+@override
+Widget build(BuildContext context) {
+  return DefaultTabController(
+    length: 4,
+    child: Scaffold(
+      body: Container(
+        color: Colors.white, // Fondo blanco
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -80,6 +82,7 @@ class _PerfilBodyState extends State<PerfilBody>
                 ],
               ),
             ),
+            
 
             // Scroll horizontal de Historias Destacadas
             Scrollbar(
@@ -129,7 +132,7 @@ class _PerfilBodyState extends State<PerfilBody>
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.bookmark_border_rounded,
+                      Icons.account_box_rounded,
                       size: 30,
                     ),
                   ),
