@@ -33,6 +33,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
+
   fonts:
     - family: spongebob
       fonts:
