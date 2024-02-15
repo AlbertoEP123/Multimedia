@@ -39,7 +39,6 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
       setState(() {
         _weatherData =
             'Temperatura: ${jsonData['main']['temp']}°C\nDescripción: ${jsonData['weather'][0]['description']}';
-            
       });
     } else {
       setState(() {
@@ -79,7 +78,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
             SizedBox(height: 20),
             Text(
               _weatherData,
-              style: const TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
             ),
           ],
