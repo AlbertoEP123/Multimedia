@@ -23,7 +23,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawer ejercicios 9,10,11,12 flutter'),
+        title: Text('9 10 11 12'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -34,7 +34,7 @@ class MyHomePage extends StatelessWidget {
                 color: Colors.blue,
               ),
               child: Text(
-                'Drawer Header',
+                'Lista de ejercicios',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
