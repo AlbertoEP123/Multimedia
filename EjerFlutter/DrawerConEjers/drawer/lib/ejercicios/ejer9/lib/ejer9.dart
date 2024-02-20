@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GridView con Dos Columnas Grises',
+      title: 'Ejer 9 gridView con botones',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -22,13 +22,13 @@ class MyGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GridView con Dos Columnas Grises'),
+        title: Text(''),
       ),
       body: GridView.count(
         crossAxisCount: 2,
         children: List.generate(10, (index) {
           return Container(
-            color: index.isEven ? Colors.grey[300] : Colors.grey[400],
+            color: index.isEven ? Colors.grey[100] : Colors.grey[400],
             margin: EdgeInsets.all(8.0),
             child: Center(
               child: Text(

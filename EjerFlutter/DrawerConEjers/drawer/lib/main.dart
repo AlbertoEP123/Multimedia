@@ -1,5 +1,5 @@
+import 'package:drawer/ejercicios/ejer9/lib/ejer9.dart';
 import 'package:flutter/material.dart';
-import 'package:lib/ejercicios/ejer9.dart'; 
 
 void main() {
   runApp(MyApp());
@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
               title: Text('Ejercicio 9'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Ejer9Screen())); // Usa Ejer9Screen sin comillas
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyGridView())); 
               },
             ),
             ListTile(
