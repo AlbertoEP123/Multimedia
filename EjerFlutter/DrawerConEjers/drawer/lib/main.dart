@@ -23,13 +23,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('9 10 11 12'),
+        title: const Text('9 10 11 12'),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -43,7 +43,8 @@ class MyHomePage extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.info),
-              title: Text('Lista ejercicios (A partir del 9), Anteriores sin drawer'),
+              title: const Text(
+                  'Lista ejercicios (A partir del 9), Anteriores sin drawer'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -53,12 +54,13 @@ class MyHomePage extends StatelessWidget {
               title: Text('Ejercicio 9'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyGridView())); 
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyGridView()));
               },
             ),
             ListTile(
               leading: Icon(Icons.book),
-              title: Text('Ejercicio 10'),
+              title: const Text('Ejercicio 10'),
               onTap: () {
                 Navigator.pop(context);
                 // Aquí puedes implementar la navegación al ejercicio 10
@@ -83,7 +85,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Ejercicios Alberto',
           style: TextStyle(fontSize: 20),
