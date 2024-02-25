@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MiApp());
 }
 
-class MyApp extends StatelessWidget {
+class MiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Adivina el Número',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.deepPurple,
+        hintColor: Colors.deepOrange,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: GuessNumberForm(),
+      home: AdivinaNumeroFormulario(),
     );
   }
 }
 
-class GuessNumberForm extends StatefulWidget {
+class AdivinaNumeroFormulario extends StatefulWidget {
   @override
-  _GuessNumberFormState createState() => _GuessNumberFormState();
+  _AdivinaNumeroFormularioState createState() =>
+      _AdivinaNumeroFormularioState();
 }
 
-class _GuessNumberFormState extends State<GuessNumberForm> {
+class _AdivinaNumeroFormularioState extends State<AdivinaNumeroFormulario> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _numberController = TextEditingController();
-  int _secretNumber = 0;
-  String _message = '';
+  final TextEditingController _controladorNumero = TextEditingController();
+  int _numeroSecreto = 0;
+  String _mensaje = '';
 
   @override
   void initState() {
     super.initState();
-    _generateSecretNumber();
+    _generarNumeroSecreto();
   }
 
-  void _generateSecretNumber() {
-    _secretNumber = 1 + DateTime.now().microsecondsSinceEpoch % 100;
+  void _generarNumeroSecreto() {
+    _numeroSecreto = 1 + DateTime.now().microsecondsSinceEpoch % 100;
   }
 
   @override
@@ -52,7 +55,7 @@ class _GuessNumberFormState extends State<GuessNumberForm> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextFormField(
-                controller: _numberController,
+                controller: _controladorNumero,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'Introduce un número del 1 al 100',
@@ -61,8 +64,8 @@ class _GuessNumberFormState extends State<GuessNumberForm> {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, introduce un número';
                   }
-                  int? number = int.tryParse(value);
-                  if (number == null || number < 1 || number > 100) {
+                  int? numero = int.tryParse(value);
+                  if (numero == null || numero < 1 || numero > 100) {
                     return 'Introduce un número válido del 1 al 100';
                   }
                   return null;
@@ -72,22 +75,22 @@ class _GuessNumberFormState extends State<GuessNumberForm> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    int guessedNumber = int.parse(_numberController.text);
-                    if (guessedNumber < _secretNumber) {
+                    int numeroAdivinado = int.parse(_controladorNumero.text);
+                    if (numeroAdivinado < _numeroSecreto) {
                       setState(() {
-                        _message = 'El número es mayor';
+                        _mensaje = 'El número es mayor';
                       });
-                    } else if (guessedNumber > _secretNumber) {
+                    } else if (numeroAdivinado > _numeroSecreto) {
                       setState(() {
-                        _message = 'El número es menor';
+                        _mensaje = 'El número es menor';
                       });
                     } else {
                       setState(() {
-                        _message =
-                            '¡Felicidades! Has adivinado el número $_secretNumber';
+                        _mensaje =
+                            '¡Felicidades! Has adivinado el número $_numeroSecreto';
                       });
-                      _generateSecretNumber();
-                      _numberController.clear();
+                      _generarNumeroSecreto();
+                      _controladorNumero.clear();
                     }
                   }
                 },
@@ -95,11 +98,11 @@ class _GuessNumberFormState extends State<GuessNumberForm> {
               ),
               SizedBox(height: 16),
               Text(
-                _message,
+                _mensaje,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Colors.deepPurple,
                 ),
               ),
             ],
@@ -111,7 +114,7 @@ class _GuessNumberFormState extends State<GuessNumberForm> {
 
   @override
   void dispose() {
-    _numberController.dispose();
+    _controladorNumero.dispose();
     super.dispose();
   }
 }

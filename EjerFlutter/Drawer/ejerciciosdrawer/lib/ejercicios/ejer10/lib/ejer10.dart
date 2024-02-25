@@ -2,19 +2,27 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 
-void main() {
-  runApp(const RandomColors());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Ejer 10',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const RandomColors(),
+    );
+  }
 }
 
 class RandomColors extends StatefulWidget {
-  const RandomColors({super.key});
+  const RandomColors({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _RandomColors createState() => _RandomColors();
+  _RandomColorsState createState() => _RandomColorsState();
 }
 
-class _RandomColors extends State<RandomColors> {
+class _RandomColorsState extends State<RandomColors> {
   int points = 0;
   late String randomName;
   late Color randomColor;
@@ -40,48 +48,51 @@ class _RandomColors extends State<RandomColors> {
     Timer.periodic(const Duration(milliseconds: 1500), (timer) {
       getRandomColor();
       getRandomName();
-      setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'Puntos: $points',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            ),
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  onGiftTap(randomName, randomColor);
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      width: 120,
-                      color: randomColor,
-                      height: 120,
-                    ),
-                    Text(
-                      randomName,
-                      style: TextStyle(
-                          color: randomColor,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Adivina el Color'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            'Puntos: $points',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          ),
+          GestureDetector(
+            onTap: () {
+              onGiftTap(randomName, randomColor);
+            },
+            child: Column(
+              children: [
+                Container(
+                  width: 120,
+                  color: randomColor,
+                  height: 120,
                 ),
-              ),
+                Text(
+                  randomName,
+                  style: TextStyle(
+                    color: randomColor,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context); // Regresa atrás
+            },
+            child: Text('Volver'),
+          ),
+        ],
       ),
     );
   }

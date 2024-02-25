@@ -5,23 +5,27 @@ import 'package:ejerciciosdrawer/ejercicios/ejer9/lib/ejer9.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PSP',
+      title: 'Programacion multimedia',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +38,7 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 65, 167, 250),
               ),
               child: Text(
                 'Lista de ejercicios',
@@ -45,7 +49,7 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.info),
+              leading: const Icon(Icons.info),
               title: const Text(
                   'Lista ejercicios (A partir del 9), Anteriores sin drawer'),
               onTap: () {
@@ -53,16 +57,18 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.book),
-              title: Text('Ejercicio 9'),
+              leading: const Icon(Icons.book),
+              title: const Text('Ejercicio 9'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyGridView()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyGridView()));
               },
             ),
             ListTile(
-              leading: Icon(Icons.book),
+              leading: const Icon(Icons.book),
               title: const Text('Ejercicio 10'),
               onTap: () {
                 Navigator.pop(context);
@@ -73,8 +79,8 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.book),
-              title: Text('Ejercicio 11'),
+              leading: const Icon(Icons.book),
+              title: const Text('Ejercicio 11'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -84,12 +90,14 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.book),
-              title: Text('Ejercicio 12'),
+              leading: const Icon(Icons.book),
+              title: const Text('Ejercicio 12'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GuessNumberForm()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AdivinaNumeroFormulario()));
               },
             ),
           ],
