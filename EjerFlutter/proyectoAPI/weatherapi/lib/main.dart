@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyWeatherApp());
@@ -10,7 +11,6 @@ class MyWeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplicación del Clima',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -27,21 +27,33 @@ class WeatherHomePage extends StatefulWidget {
 class _WeatherHomePageState extends State<WeatherHomePage> {
   final TextEditingController _cityController = TextEditingController();
   String _weatherData = '';
+  String _googleMapsLink = '';
+
+  void initState() {
+    super.initState();
+    _cityController.addListener(_onCityChanged);
+  }
+
+  void _onCityChanged() {
+    setState(() {
+      _googleMapsLink = ''; // Restablecer el enlace cuando cambia la ciudad
+    });
+  }
 
   Future<void> _getWeatherData(String city) async {
     final String apiKey = '25ed3f5e8fa270f9f1f38b18e02e25b1';
     final String apiUrl =
         'http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric';
-    String _googleMapsLink = '';
 
     final response = await http.get(Uri.parse(apiUrl));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final datosPrincipales = jsonData['main'];
       final datosClima = jsonData['weather'][0];
-      final nombreCiudad = jsonData['name']; // Nombre de la ciudad
-      final pais = jsonData['sys']['country']; // País
+      final coordenadas = jsonData['coord'];
 
+      final nombreCiudad = jsonData['name'];
+      final pais = jsonData['sys']['country'];
       final temperatura = datosPrincipales['temp'];
       final sensacionTermica = datosPrincipales['feels_like'];
       final tempMinima = datosPrincipales['temp_min'];
@@ -55,14 +67,11 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
       final atardecer = jsonData['sys']['sunset'];
       final velocidadViento = jsonData['wind']['speed'];
       final direccionViento = jsonData['wind']['deg'];
-      final coordenadas = jsonData['coord'];
-      // Construir el enlace de Google Maps
       final latitude = coordenadas['lat'];
       final longitude = coordenadas['lon'];
       final googleMapsUrl =
           'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
 
-      // Mostrar el AlertDialog con el nombre de la ciudad y el país
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -95,7 +104,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
             'Hora del atardecer: ${_convertirUnixAFormatoHora(atardecer)}\n' +
             'Velocidad del viento: $velocidadViento m/s\n' +
             'Dirección del viento: $direccionViento°\n' +
-            'Coordenadas Geográficas: Latitud: ${coordenadas['lat']}, Longitud: ${coordenadas['lon']}';
+            'Coordenadas Geográficas: Latitud: $latitude, Longitud: $longitude';
         _googleMapsLink = googleMapsUrl;
       });
     } else {
@@ -114,7 +123,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Aplicación del Clima'),
+        title: const Text('WeatherApi Alberto'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -144,6 +153,20 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
               style: TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
             ),
+            SizedBox(height: 20),
+            if (_googleMapsLink.isNotEmpty)
+              ElevatedButton(
+                onPressed: () {
+                  launch(_googleMapsLink);
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.map), // Agrega el icono antes del texto
+                    Text('Ver en Google Maps'),
+                  ],
+                ),
+              ),
           ],
         ),
       ),
